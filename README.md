@@ -26,8 +26,11 @@ This wallet is based of https://github.com/sumoprojects/SumoGUIWallet
 
 4. Contribution
 
-Pull-requests and help is always welcome. Since I'm not the greatest Phyton developer feel free to ask to take over the project. If you want to buy me a beer:
+	Pull-requests and help is always welcome. Since I'm not the greatest Phyton developer feel free to ask to take over the project. If you want to buy me a beer:
 
-ETN: etnjwraRJzdMMDy5zMY1CEaKCHYqn73AvKzKj2MCtLfXDdzoFSQqKHwENYA4gjY7mhRRbko3rbed8JnQnVNrXukV33AymaJNkD
-BTC: 1FjP4tLe36p1fKGtkhJRx8713Gv94Nyjdb
-ETH: 0x4ab0363f6fa686fe28d3c9b7aaa6a7756ba2c4e2
+	
+	ETN: etnjwraRJzdMMDy5zMY1CEaKCHYqn73AvKzKj2MCtLfXDdzoFSQqKHwENYA4gjY7mhRRbko3rbed8JnQnVNrXukV33AymaJNkD
+	
+	BTC: 1FjP4tLe36p1fKGtkhJRx8713Gv94Nyjdb
+	
+	ETH: 0x4ab0363f6fa686fe28d3c9b7aaa6a7756ba2c4e2
