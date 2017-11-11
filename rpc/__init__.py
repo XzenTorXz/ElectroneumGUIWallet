@@ -17,6 +17,7 @@ from Queue import Queue
 from threading import Thread
 from multiprocessing import Event
 from time import sleep
+from settings import RPC_DAEMON_PORT
 
 rpc_id = 0
 
@@ -103,7 +104,7 @@ class RPCRequest(Thread):
 
 class DaemonRPCRequest():
     def __init__(self, app):
-        self.port = 19734
+        self.port = RPC_DAEMON_PORT
         self.url = "http://localhost:%d/json_rpc" % self.port
         self.app = app
         
@@ -119,7 +120,7 @@ class DaemonRPCRequest():
     
 class WalletRPCRequest():
     def __init__(self, app, user_agent):
-        self.port = 19736
+        self.port = RPC_DAEMON_PORT+2
         self.url = "http://localhost:%d/json_rpc" % self.port
         self.app = app
         self.user_agent = user_agent

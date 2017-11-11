@@ -8,7 +8,7 @@ from __future__ import print_function
 # -*- coding: utf-8 -*-
 ## Copyright (c) 2017, The Sumokoin Project (www.sumokoin.org)
 '''
-Process managers for sumokoind, sumo-wallet-cli and sumo-wallet-rpc
+Process managers for electroneumd, electroneum-wallet-cli and electroneum-wallet-rpc
 '''
 
 import sys, os
@@ -18,6 +18,7 @@ from threading import Thread
 from multiprocessing import Process, Event
 from time import sleep
 from uuid import uuid4
+from settings import RPC_DAEMON_PORT
 
 from utils.logger import log, LEVEL_DEBUG, LEVEL_ERROR, LEVEL_INFO
 
@@ -76,10 +77,10 @@ class ProcessManager(Thread):
         return (self.proc.poll() is None)
     
 
-class SumokoindManager(ProcessManager):
+class ElectroneumdManager(ProcessManager):
     def __init__(self, resources_path, log_level=0, block_sync_size=10):
-        proc_args = u'%s/bin/sumokoind --log-level %d --block-sync-size %d' % (resources_path, log_level, block_sync_size)
-        ProcessManager.__init__(self, proc_args, "sumokoind")
+        proc_args = u'%s/bin/electroneumd --log-level %d --block-sync-size %d --rpc-bind-port %d' % (resources_path, log_level, block_sync_size, RPC_DAEMON_PORT)
+        ProcessManager.__init__(self, proc_args, "electroneumd")
         self.synced = Event()
         self.stopped = Event()
         
@@ -106,12 +107,12 @@ class WalletCliManager(ProcessManager):
     
     def __init__(self, resources_path, wallet_file_path, wallet_log_path, restore_wallet=False):
         if not restore_wallet:
-            wallet_args = u'%s/bin/sumo-wallet-cli --generate-new-wallet=%s --log-file=%s' \
+            wallet_args = u'%s/bin/electroneum-wallet-cli --generate-new-wallet=%s --log-file=%s' \
                                                 % (resources_path, wallet_file_path, wallet_log_path)
         else:
-            wallet_args = u'%s/bin/sumo-wallet-cli --log-file=%s --daemon-port 19735 --restore-deterministic-wallet' \
-                                                % (resources_path, wallet_log_path)
-        ProcessManager.__init__(self, wallet_args, "sumo-wallet-cli")
+            wallet_args = u'%s/bin/electroneum-wallet-cli --log-file=%s --daemon-port %d --restore-deterministic-wallet' \
+                                                % (resources_path, wallet_log_path, RPC_DAEMON_PORT+1)
+        ProcessManager.__init__(self, wallet_args, "electroneum-wallet-cli")
         self.ready = Event()
         self.last_error = ""
         
@@ -146,11 +147,11 @@ class WalletCliManager(ProcessManager):
 class WalletRPCManager(ProcessManager):
     def __init__(self, resources_path, wallet_file_path, wallet_password, app, log_level=2):
         self.user_agent = str(uuid4().hex)
-        wallet_log_path = os.path.join(os.path.dirname(wallet_file_path), "sumo-wallet-rpc.log")
-        wallet_rpc_args = u'%s/bin/sumo-wallet-rpc --wallet-file %s --log-file %s --rpc-bind-port 19736 --user-agent %s --log-level %d' \
-                                            % (resources_path, wallet_file_path, wallet_log_path, self.user_agent, log_level)
-                                                                                
-        ProcessManager.__init__(self, wallet_rpc_args, "sumo-wallet-rpc")
+        wallet_log_path = os.path.join(os.path.dirname(wallet_file_path), "electroneum-wallet-rpc.log")
+        wallet_rpc_args = u'%s/bin/electroneum-wallet-rpc --disable-rpc-login --wallet-file %s --log-file %s --rpc-bind-port %d --log-level %d --daemon-port %d' % (resources_path, wallet_file_path, wallet_log_path, RPC_DAEMON_PORT+2, log_level, RPC_DAEMON_PORT)
+        log(wallet_rpc_args, LEVEL_INFO)
+        
+        ProcessManager.__init__(self, wallet_rpc_args, "electroneum-wallet-rpc")
         sleep(0.2)
         self.send_command(wallet_password)
         

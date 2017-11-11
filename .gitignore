@@ -6,6 +6,9 @@
 /tags
 /log
 /logs
+/data
+/nbproject
+*.login
 
 # vim swap files
 *.swp
@@ -103,3 +106,4 @@ local.properties
 # TeXlipse plugin
 .texlipse
 .idea/
+/nbproject/private/

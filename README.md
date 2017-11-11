@@ -1,19 +1,8 @@
-# Sumokoin GUI Wallet
+# Electroneum GUI Wallet
 
-Copyright (c) 2017, Sumokoin.org
+This wallet is based of https://github.com/sumoprojects/SumoGUIWallet
 
-**One of the most easy-to-use, intuitive GUI (full) wallets in crypto.**
-
-![](https://www.sumokoin.org/images/sumokoin-gui-wallet-v0.0.1-b2.png)
-
-
-# Installation & running from source codes
-
-1. Clone the repo:
-		
-		git clone https://github.com/sumoprojects/SumoGUIWallet SumoGUIWallet
-
-2. Install dependencies (with Python 2.7):
+1. Install dependencies (with Python 2.7):
 
 	* Generally, you can use Python `pip` to install required components:
 		
@@ -28,9 +17,17 @@ Copyright (c) 2017, Sumokoin.org
 			sudo apt install python-pyside
 
 
-3. Build/download Sumokoin binaries from [Sumokoin repo](https://github.com/sumoprojects/sumokoin) and put it to `Resources/bin` sub-directory.
+2. Build/download Sumokoin binaries from [Sumokoin repo](https://github.com/sumoprojects/sumokoin) and put it to `Resources/bin` sub-directory.
 
-4. Run the wallet (Python 2.7):
+3. Run the wallet (Python 2.7):
 		
 		cd /path/to/SumoGUIWallet
 		python wallet.py
+
+4. Contribution
+
+Pull-requests and help is always welcome. Since I'm not the greatest Phyton developer feel free to ask to take over the project. If you want to buy me a beer:
+
+ETN: etnjwraRJzdMMDy5zMY1CEaKCHYqn73AvKzKj2MCtLfXDdzoFSQqKHwENYA4gjY7mhRRbko3rbed8JnQnVNrXukV33AymaJNkD
+BTC: 1FjP4tLe36p1fKGtkhJRx8713Gv94Nyjdb
+ETH: 0x4ab0363f6fa686fe28d3c9b7aaa6a7756ba2c4e2

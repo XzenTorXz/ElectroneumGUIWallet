@@ -13,12 +13,12 @@ import logging
 
 from utils.common import getHomeDir, makeDir
 
-USER_AGENT = "Sumokoin GUI Wallet"
-APP_NAME = "Sumokoin Wallet"
+USER_AGENT = "Electroneum GUI Wallet"
+APP_NAME = "Electroneum Wallet"
 VERSION = [0, 0, 1]
 
 
-_data_dir = makeDir(os.path.join(getHomeDir(), 'SumokoinGUIWallet'))
+_data_dir = makeDir(os.path.join(os.getcwd(), 'data'))
 DATA_DIR = _data_dir
 
 log_file  = os.path.join(DATA_DIR, 'logs', 'app.log') # default logging file
@@ -34,4 +34,7 @@ seed_languages = [("0", "English"),
                 ]
 
 # COIN - number of smallest units in one coin
-COIN = 1000000000.0
+COIN = 100.0
+
+WALLET_DAEMON_PORT = 18081
+RPC_DAEMON_PORT = 26968

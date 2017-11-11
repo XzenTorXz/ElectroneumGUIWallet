@@ -264,7 +264,7 @@ html ="""
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="wallet_address">Address</label>
-                            <input id="wallet_address" type="text" class="form-control address-box" style="color:#c7254e;" readonly="readonly" value="Sumoo..."/>
+                            <input id="wallet_address" type="text" class="form-control address-box" style="color:#c7254e;" readonly="readonly" value="etn..."/>
                         </div>
                         <div class="form-group">
                             <label for="wallet_seed_words">Mnemonic seed <code>(Important! Always backup this for wallet restoration)</code></label>

@@ -92,12 +92,12 @@ def print_money(amount):
         amount = int(amount)
     except:
         raise Exception("Error parsing amount. Money amount must be an integer.")
-    return "%s <small>SUMO</small>" % ("{:,.9f}".format(amount/1000000000.))
+    return "%s <small>ETN</small>" % ("{:,.9f}".format(amount/100.))
 
 def print_money2(amount):
     try:
         amount = int(amount)
     except:
         raise Exception("Error parsing amount. Money amount must be an integer.")
-    return "%s" % ("{:,.9f}".format(amount/1000000000.))
+    return "%s" % ("{:,.9f}".format(amount/100.))
     

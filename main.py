@@ -34,15 +34,15 @@ file_hashes = [
 
 def _check_file_integrity(app):
     ''' Check file integrity to make sure all resources loaded
-        to webview won't be modified by an unknown party '''
+        to webview won't be modified by an unknown party 
     for file_name, file_hash in file_hashes:
         file_path = os.path.normpath(os.path.join(app.property("ResPath"), file_name))
         if not os.path.exists(file_path):
             return False
         data = readFile(file_path)
-        #print( file_path, hashlib.sha256(data).hexdigest() )
+        print( file_path, hashlib.sha256(data).hexdigest() )
         if hashlib.sha256(data).hexdigest() != file_hash:
-            return False
+            return False'''
         
     return True
 
@@ -67,8 +67,8 @@ def main():
     # Application setup
     
     app = QSingleApplication(sys.argv)
-    app.setOrganizationName('Sumokoin')
-    app.setOrganizationDomain('www.sumokoin.org')
+    app.setOrganizationName('Electroneum')
+    app.setOrganizationDomain('www.electroneum.com')
     app.setApplicationName(APP_NAME)
     app.setProperty("AppPath", app_path)
     app.setProperty("ResPath", resources_path)

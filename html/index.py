@@ -423,7 +423,7 @@ html ="""
                     if(tx.hasOwnProperty('destinations')){
                         var destinations = tx['destinations'];
                         for(var i=0; i < destinations.length; i++ ){
-                            dest_html += '<li>Amount: <span class="tx-list tx-amount tx-' + tx['status'] + '">' + printMoney(destinations[i]['amount']/1000000000) + "</span>Address: <strong>" + destinations[i]['address'] + "</strong></li>";
+                            dest_html += '<li>Amount: <span class="tx-list tx-amount tx-' + tx['status'] + '">' + printMoney(destinations[i]['amount']/100) + "</span>Address: <strong>" + destinations[i]['address'] + "</strong></li>";
                         }
                     }
                     
@@ -436,8 +436,8 @@ html ="""
                                                             'tx_fa_icon': tx['direction'] == "in" ? "mail-forward" : "reply",
                                                             'tx_id': tx['txid'],
                                                             'tx_payment_id': tx['payment_id'], 
-                                                            'tx_amount': printMoney(tx['amount']/1000000000.),
-                                                            'tx_fee': printMoney(tx['fee']/1000000000.),
+                                                            'tx_amount': printMoney(tx['amount']/100.),
+                                                            'tx_fee': printMoney(tx['fee']/100.),
                                                             'tx_fee_hide': tx['fee'] > 0 ? '' : 'tx-fee-hide',
                                                             'tx_date': dateConverter(tx['timestamp']),
                                                             'tx_time': timeConverter(tx['timestamp']),
@@ -475,7 +475,7 @@ html ="""
                             'tx_id': tx['txid'],
                             'tx_id_short': tx['txid'].substring(0, 26) + "...",
                             'tx_payment_id': tx['payment_id'].substring(0, 16),
-                            'tx_amount': printMoney(tx['amount']/1000000000.),
+                            'tx_amount': printMoney(tx['amount']/100.),
                             'tx_height': tx['height'],
                             'cls_in_out': tx['status']
                         });
@@ -605,8 +605,8 @@ html ="""
                                                             'tx_fa_icon': tx['direction'] == "in" ? "mail-forward" : "reply",
                                                             'tx_id': tx['txid'],
                                                             'tx_payment_id': tx['payment_id'], 
-                                                            'tx_amount': printMoney(tx['amount']/1000000000.),
-                                                            'tx_fee': printMoney(tx['fee']/1000000000.),
+                                                            'tx_amount': printMoney(tx['amount']/100.),
+                                                            'tx_fee': printMoney(tx['fee']/100.),
                                                             'tx_fee_hide': tx['fee'] > 0 ? '' : 'tx-fee-hide',
                                                             'tx_date': dateConverter(tx['timestamp']),
                                                             'tx_time': timeConverter(tx['timestamp']),
@@ -705,8 +705,8 @@ html ="""
                     errors.push("Address is required!");
                     $('#send_address').parent().addClass('has-error');
                 }
-                else if(!((address.substr(0, 4) == "Sumo" && address.length == 99) || (address.substr(0, 4) == "Sumi"  && address.length == 110))){
-                    errors.push("Address is not valid!");
+                else if(!(address.substr(0, 3) == "etn" && address.length == 98)){
+                    errors.push("Address is not valid!"+address.length);
                     $('#send_address').parent().addClass('has-error');
                 }
                 else{
@@ -978,8 +978,8 @@ html ="""
                                 <h5><i class="fa fa-fw fa-unlock"></i> Unlocked Balance:</h5>
                             </div>
                             <div class="col-xs-6" style="text-align:right">
-                                <h5><span id="balance">0.000000000</span> <small>SUMO</small> <span class="syncing"> (syncing)</span></h5>
-                                <h5><span id="unlocked_balance">0.000000000</span> <small>SUMO</small> <span class="syncing"> (syncing)</span></h5>
+                                <h5><span id="balance">0.000000000</span> <small>ETN</small> <span class="syncing"> (syncing)</span></h5>
+                                <h5><span id="unlocked_balance">0.000000000</span> <small>ETN</small> <span class="syncing"> (syncing)</span></h5>
                             </div>
                             <div class="col-xs-12" style="margin-top: 10px">
                                 <button id="btn_rescan_spent" type="button" class="btn btn-primary" onclick="rescan_spent()" disabled><i class="fa fa-sort-amount-desc"></i> Rescan Spent</button>
@@ -1266,7 +1266,7 @@ html ="""
         <script id="recent_tx_row_templ" type="x-tmpl-mustache">
             <div class="col-sm-12">
                 <div class="col-xs-10" style="padding-right:0">
-                    <p class="tx-list tx-{{cls_in_out}}"><i class="fa fa-{{ tx_fa_icon }}"></i> ({{tx_direction}}) <span class="tx-list txid"><a href="javascript:open_link('https://explorer.sumokoin.com/tx/{{ tx_id }}')" title="View on blockchain explorer">{{ tx_id }}</a></span></p>
+                    <p class="tx-list tx-{{cls_in_out}}"><i class="fa fa-{{ tx_fa_icon }}"></i> ({{tx_direction}}) <span class="tx-list txid"><a href="javascript:open_link('https://blockexplorer.electroneum.com/tx/{{ tx_id }}')" title="View on blockchain explorer">{{ tx_id }}</a></span></p>
                     Payment ID: <span class="tx-list tx-payment-id">{{ tx_payment_id }}</span><br/>
                     Height: <span class="tx-list tx-height">{{ tx_height }}</span>  Date: <span class="tx-list tx-date">{{ tx_date }}</span> Time: <span class="tx-list tx-time">{{ tx_time }}</span> Status: <span class="tx-list tx-status">{{ tx_status }}</span><br/>
                     <p style="font-size:140%">Amount: <span class="tx-list tx-{{cls_in_out}} tx-amount {{tx_lock_cls}}">{{{tx_lock_icon}}}{{ tx_amount }}</span> <span class="{{ tx_fee_hide }}">Fee:</span> <span class="tx-list tx-{{cls_in_out}} tx-fee {{ tx_fee_hide }}">{{ tx_fee }}</span></p> 
@@ -1280,7 +1280,7 @@ html ="""
         
         <script id="tx_detail_templ" type="x-tmpl-mustache">
             <p class="tx-list tx-{{cls_in_out}}" style="font-size: 90%"><i class="fa fa-{{ tx_fa_icon }}"></i> {{tx_direction}}<br>
-                <span class="tx-list txid"><a href="javascript:open_link('https://explorer.sumokoin.com/tx/{{ tx_id }}')" title="View on blockchain explorer">{{ tx_id }}</a></span>
+                <span class="tx-list txid"><a href="javascript:open_link('https://blockexplorer.electroneum.com/tx/{{ tx_id }}')" title="View on blockchain explorer">{{ tx_id }}</a></span>
             </p>
             <ul style="font-size: 90%">
                 <li>Payment ID: <span class="tx-list tx-payment-id">{{ tx_payment_id }}</span></li>

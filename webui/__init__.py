@@ -28,7 +28,7 @@ from settings import APP_NAME, USER_AGENT, VERSION, COIN
 from utils.logger import log, LEVEL_DEBUG, LEVEL_ERROR, LEVEL_INFO
 from utils.common import readFile
 
-from manager.ProcessManager import SumokoindManager, WalletRPCManager
+from manager.ProcessManager import ElectroneumdManager, WalletRPCManager
 from rpc import RPCRequest, DaemonRPCRequest
 
 from classes import AppSettings, WalletInfo
@@ -101,7 +101,7 @@ class BaseWebUI(QMainWindow):
         self.view.setZoomFactor(1)
         
         self.setWindowTitle(APP_NAME)
-        self.icon = self._getQIcon('sumokoin_icon_64.png')
+        self.icon = self._getQIcon('electroneum_icon_64.png')
         self.setWindowIcon(self.icon)
         
         self.setCentralWidget(self.view)
@@ -180,7 +180,7 @@ class MainWebUI(BaseWebUI):
         
         self.app.aboutToQuit.connect(self._handleAboutToQuit)
         
-        self.sumokoind_daemon_manager = None
+        self.electroneumd_daemon_manager = None
         self.wallet_cli_manager = None
         self.wallet_rpc_manager = None
         
@@ -216,12 +216,12 @@ class MainWebUI(BaseWebUI):
         
     
     def start_deamon(self):
-        #start sumokoind daemon
-        self.sumokoind_daemon_manager = SumokoindManager(self.app.property("ResPath"), 
+        #start electroneumd daemon
+        self.electroneumd_daemon_manager = ElectroneumdManager(self.app.property("ResPath"), 
                                             self.app_settings.settings['daemon']['log_level'], 
                                             self.app_settings.settings['daemon']['block_sync_size'])
         
-        self.sumokoind_daemon_manager.start()
+        self.electroneumd_daemon_manager.start()
         
         
     def show_wallet(self):
@@ -241,8 +241,8 @@ class MainWebUI(BaseWebUI):
         
         while True:
             self.hub.app_process_events()
-            sumokoind_info = self.daemon_rpc_request.get_info()
-            if sumokoind_info['status'] == "OK":
+            electrond_info = self.daemon_rpc_request.get_info()
+            if electrond_info['status'] == "OK":
                 self.wallet_rpc_manager = WalletRPCManager(self.app.property("ResPath"), \
                                                 self.wallet_info.wallet_filepath, \
                                                 wallet_password, \
@@ -252,17 +252,17 @@ class MainWebUI(BaseWebUI):
         
     def _update_daemon_status(self):
         target_height = 0
-        sumokoind_info = self.daemon_rpc_request.get_info()
-        if sumokoind_info['status'] == "OK":
+        electrond_info = self.daemon_rpc_request.get_info()
+        if electrond_info['status'] == "OK":
             status = "Connected"
-            self.current_height = int(sumokoind_info['height'])
-            target_height = int(sumokoind_info['target_height'])
+            self.current_height = int(electrond_info['height'])
+            target_height = int(electrond_info['target_height'])
             if target_height == 0 or target_height < self.current_height:
                 target_height = self.current_height
             if self.target_height < target_height:
                 self.target_height = target_height;
         else:
-            status = sumokoind_info['status']
+            status = electrond_info['status']
         
         info = {"status": status, 
                 "current_height": self.current_height, 
@@ -430,8 +430,8 @@ class MainWebUI(BaseWebUI):
             self.timer2.stop()
         if self.wallet_rpc_manager is not None:
             self.wallet_rpc_manager.stop()
-        if self.sumokoind_daemon_manager is not None:
-            self.sumokoind_daemon_manager.stop()
+        if self.electrond_daemon_manager is not None:
+            self.electrond_daemon_manager.stop()
         
         self.app_settings.settings['blockchain']['height'] = self.target_height
         self.app_settings.save()
