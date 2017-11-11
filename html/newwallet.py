@@ -28,7 +28,7 @@ html ="""
             function restore_wallet(){
                 var seed = $('#seed').val();
                 seed = replaceAll(seed, "\\n", " ");
-                if(seed.length == 0 || seed.split(" ").length != 26)
+                if(seed.length == 0 || seed.split(" ").length != 25)
                     alert("Please paste 26 mnemonic seed words to above box", "Seed words required!");
                 else
                     app_hub.create_new_wallet(seed);
@@ -236,7 +236,7 @@ html ="""
                         <h4>Restore Wallet</h4>
                         <div class="form-group">
                             <label for="seed">Mnemonic Seed:</label>
-                            <textarea id="seed" class="form-control" placeholder="Paste mnemonic seed (26 words) here" style="height:80px;margin-bottom:10px;font-size:100%"></textarea>
+                            <textarea id="seed" class="form-control" placeholder="Paste mnemonic seed (25 words) here" style="height:80px;margin-bottom:10px;font-size:100%"></textarea>
                             <button id="restore_wallet_btn" type="button" class="btn btn-primary" onclick="restore_wallet()"><i class="fa fa-undo"></i> Restore</button>
                         </div>
                     </div>
