@@ -401,7 +401,7 @@ class MainWebUI(BaseWebUI):
                 self.close()
                 return
             else:
-                self.run_wallet_rpc(wallet_password, 0)
+                self.run_wallet_rpc(wallet_password, 2)
                 while not self.wallet_rpc_manager.is_ready():
                     self.hub.app_process_events(0.5)
                     if self.wallet_rpc_manager.is_invalid_password():
