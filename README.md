@@ -1,6 +1,8 @@
 # Electroneum GUI Wallet
 
-This wallet is based of https://github.com/sumoprojects/SumoGUIWallet
+This is a fork of the **Sumokoin GUI Wallet**: https://github.com/sumoprojects/SumoGUIWallet
+It is changed to be compatible with Electroneum.
+
 
 1. Install dependencies (with Python 2.7):
 
