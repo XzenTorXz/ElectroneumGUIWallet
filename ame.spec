@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['wallet.py'],
+a = Analysis(['ElectroneumGUIWallet', 'wallet.py'],
              pathex=['C:\\Users\\franz\\Projekte\\ElectroneumGUIWallet'],
              binaries=[],
              datas=[('Resources', 'Resources')],
@@ -19,7 +19,7 @@ pyz = PYZ(a.pure, a.zipped_data,
 exe = EXE(pyz,
           a.scripts,
           exclude_binaries=True,
-          name='wallet',
+          name='ame',
           debug=False,
           strip=False,
           upx=True,
@@ -30,4 +30,4 @@ coll = COLLECT(exe,
                a.datas,
                strip=False,
                upx=True,
-               name='wallet')
+               name='ame')

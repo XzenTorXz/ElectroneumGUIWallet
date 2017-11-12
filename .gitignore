@@ -9,6 +9,7 @@
 /data
 /nbproject
 *.login
+build.bat
 
 # vim swap files
 *.swp

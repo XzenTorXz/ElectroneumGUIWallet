@@ -148,15 +148,12 @@ class WalletRPCManager(ProcessManager):
     def __init__(self, resources_path, wallet_file_path, wallet_password, app, log_level=2):
         self.user_agent = str(uuid4().hex)
         wallet_log_path = os.path.join(os.path.dirname(wallet_file_path), "electroneum-wallet-rpc.log")
-        wallet_rpc_args = u'%s/bin/electroneum-wallet-rpc --disable-rpc-login --wallet-file %s --log-file %s --rpc-bind-port %d --log-level %d --daemon-port %d' % (resources_path, wallet_file_path, wallet_log_path, RPC_DAEMON_PORT+2, log_level, RPC_DAEMON_PORT)
-        log(wallet_rpc_args, LEVEL_INFO)
+        wallet_rpc_args = u'%s/bin/electroneum-wallet-rpc --restricted-rpc --disable-rpc-login --wallet-file %s --log-file %s --rpc-bind-port %d --log-level 2 --daemon-port %d --password %s' % (resources_path, wallet_file_path, wallet_log_path, RPC_DAEMON_PORT+2, RPC_DAEMON_PORT, wallet_password)
         
         ProcessManager.__init__(self, wallet_rpc_args, "electroneum-wallet-rpc")
-        sleep(0.2)
-        self.send_command(wallet_password)
         
         self.rpc_request = WalletRPCRequest(app, self.user_agent)
-#         self.rpc_request.start()
+        
         self.ready = False
         self.block_hex = None
         self.block_height = 0

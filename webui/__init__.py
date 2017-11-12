@@ -430,8 +430,8 @@ class MainWebUI(BaseWebUI):
             self.timer2.stop()
         if self.wallet_rpc_manager is not None:
             self.wallet_rpc_manager.stop()
-        if self.electrond_daemon_manager is not None:
-            self.electrond_daemon_manager.stop()
+        if self.electroneumd_daemon_manager is not None:
+            self.electroneumd_daemon_manager.stop()
         
         self.app_settings.settings['blockchain']['height'] = self.target_height
         self.app_settings.save()
