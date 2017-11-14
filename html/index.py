@@ -742,7 +742,6 @@ html ="""
                 
                 btn_send_tx.disable(true);
                 show_progress("Sending coins... This can take a while for big amount...");
-                alert("send_tx("+amount+", "+address+", "+payment_id+", "+priority+", "+mixin+", "+tx_desc+", "+$('#checkbox_save_address').is(":checked")+", "+sweep_all+")");
                 app_hub.send_tx(amount, address, payment_id, priority, mixin, tx_desc, $('#checkbox_save_address').is(":checked"), sweep_all);
                 return false;
             }
