@@ -24,13 +24,17 @@ DATA_DIR = _data_dir
 log_file  = os.path.join(DATA_DIR, 'logs', 'app.log') # default logging file
 log_level = logging.DEBUG # logging level
 
-seed_languages = [("0", "English"), 
-                  ("1", "Spanish"), 
-                  ("2", "German"), 
-                  ("3", "Italian"), 
-                  ("4", "Portuguese"),
-                  ("5", "Russian"),
-                  ("6", "Japanese"),
+seed_languages = [("1", "English"), 
+                  ("0", "German"), #Deutsch
+                  ("2", "Spanish"),  #Español
+                  ("3", "Francais"), #Français
+                  ("4", "Italian"), #Italiano
+                  ("5", "Dutch"), #Nederlands
+                  ("6", "Portuguese"), #Português
+                  ("7", "Russian"), #русский языкês
+                  ("8", "Japanese"), #日本語
+                  ("9", "Chinese"), #简体中文 (中国)
+                  ("10", "Esperanto"),
                 ]
 
 # COIN - number of smallest units in one coin

@@ -110,8 +110,8 @@ class WalletCliManager(ProcessManager):
             wallet_args = u'%s/bin/electroneum-wallet-cli --generate-new-wallet=%s --log-file=%s' \
                                                 % (resources_path, wallet_file_path, wallet_log_path)
         else:
-            wallet_args = u'%s/bin/electroneum-wallet-cli --log-file=%s --daemon-port %d --restore-deterministic-wallet' \
-                                                % (resources_path, wallet_log_path, RPC_DAEMON_PORT+1)
+            wallet_args = u'%s/bin/electroneum-wallet-cli --log-file=%s --restore-deterministic-wallet' \
+                                                % (resources_path, wallet_log_path)
         ProcessManager.__init__(self, wallet_args, "electroneum-wallet-cli")
         self.ready = Event()
         self.last_error = ""

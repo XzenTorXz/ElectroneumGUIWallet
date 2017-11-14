@@ -29,7 +29,7 @@ html ="""
                 var seed = $('#seed').val();
                 seed = replaceAll(seed, "\\n", " ");
                 if(seed.length == 0 || seed.split(" ").length != 25)
-                    alert("Please paste 26 mnemonic seed words to above box", "Seed words required!");
+                    alert("Please paste 25 mnemonic seed words to above box", "Seed words required!");
                 else
                     app_hub.create_new_wallet(seed);
                 return false;

@@ -190,11 +190,11 @@ class Hub(QObject):
                 
             if has_password:
                 if not mnemonic_seed: # i.e. create new wallet
-                    mnemonic_seed_language = "0" # english
+                    mnemonic_seed_language = "1" # english
                     seed_language_list = [sl[1] for sl in seed_languages]
                     lang, ok = QInputDialog.getItem(self.new_wallet_ui, "Mnemonic Seed Language", 
                                 "Select a language for wallet mnemonic seed:", 
-                                seed_language_list, 0, False)
+                                seed_language_list, 1, False)
                     if ok and lang:
                         for sl in seed_languages:
                             if sl[1] == lang:
@@ -229,13 +229,11 @@ class Hub(QObject):
                     self.app_process_events(1)
                     self.wallet_cli_manager.send_command(wallet_filepath)
                     self.app_process_events(0.5)
-                    self.wallet_cli_manager.send_command("Y")
-                    self.app_process_events(0.5)
                     self.wallet_cli_manager.send_command(mnemonic_seed)
                     self.app_process_events(0.5)
-                    self.wallet_cli_manager.send_command("0") # rescan from block height 0
-                    self.app_process_events(0.5)
                     self.wallet_cli_manager.send_command(wallet_password)
+                    self.app_process_events(0.5)
+                    self.wallet_cli_manager.send_command("0") # rescan from block height 0
                     self.app_process_events(0.5)
                     self.wallet_cli_manager.send_command("exit")
                     
