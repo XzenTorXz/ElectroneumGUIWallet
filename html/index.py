@@ -1046,7 +1046,12 @@ html ="""
                                     <label for="send_mixins" class="col-xs-4 control-label">Privacy <sup>1</sup></label>
                                     <div class="col-xs-8">
                                         <select id="send_mixins" class="form-control">
-                                          <option value="12" selected>12 mixins (default)</option>
+                                          <option value="0">0 mixins</option>
+                                          <option value="2">2 mixins</option>
+                                          <option value="4" selected>4 mixins</option>
+                                          <option value="8">8 mixins</option>
+                                          <option value="10">10 mixins</option>
+                                          <option value="12">12 mixins</option>
                                           <option value="15">15 mixins</option>
                                           <option value="18">18 mixins</option>
                                           <option value="24">24 mixins</option>
