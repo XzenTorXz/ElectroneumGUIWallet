@@ -11,285 +11,7 @@ html ="""
     <head>
         <link href="./css/bootstrap.min.css" rel="stylesheet">
         <link href="./css/font-awesome.min.css" rel="stylesheet">
-        <style type="text/css">
-            * {
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-            }
-            
-            body {
-                -webkit-user-select: none;
-                user-select: none;
-              
-                cursor: default;
-                background-color: #fff;
-                color: #76A500;
-                background-position: center center;
-                font-family: "RoboReg", "Helvetica Neue",Helvetica,Arial,sans-serif;
-                font-size: 14px;
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-            }
-            
-            a, a:hover, a:active, a:focus {
-                text-decoration: none;
-                outline: 0;
-                cursor: default;
-            }
-            
-            a, a:active, a:focus{
-                color: #337AB7;
-            }
-            
-            a:hover{
-                color: #fff;
-            }
-            
-            .nav-tabs{
-                /*width: 760px;*/
-            }
-            .nav-tabs li{
-                width: 20%;
-                text-align: center;
-                font-size: 120%
-            }
-            
-            .container{
-                width: 760px;
-                padding: 0;
-                margin: 5px 0px 5px 20px;
-            }
-            
-            h3{
-                text-align: center;
-                margin-bottom: 1em;
-                font-size: 180%;
-            }
-                       
-                        
-            .tab-content{
-                font-size: 12px;
-            }
-            
-            .tab-content h3{
-                margin-top: 0;
-            }
-            
-            #balance_tab h4, #balance_tab h5{
-                color: #76A500;
-            }
-            
-            #balance_tab h5 span{
-                color: #ccc;
-            }
-            
-            #settings_tab h3{
-                margin-top: 20px;
-                margin-bottom: 30px;
-            }
-            
-            .syncing{
-                font-size: 60%;
-            }
-            
-            .tab-content .tab-pane {    
-                position: relative;
-            }
-            
-            .form-horizontal .control-label{
-                text-align: left;
-            }
-                       
-            
-            .progress{
-                height: 22px;
-                text-align: center;
-                background: #ddd;
-            }
-            
-            #progress_bar_text_high{
-                font-size: 90%; 
-                display: none;
-            }
-            
-            #progress_bar_text_low{
-                font-size: 80%;
-                color: #c7254e;
-            }
-            
-            .control-label{
-                font-weight: bold;
-            }
-            
-            .tx-list{
-                color: #666;
-                margin-right: 20px;
-                font-weight: bold;
-            }
-            
-            .tx-list a{
-                cursor: pointer;
-            }
-            
-            .tx-list.tx-out, .tx-list.tx-in, .tx-list.tx-pool, .tx-list.tx-pending, .tx-list.tx-out a, .tx-list.tx-out a:active, .tx-list.tx-out a:focus{
-                color: #c7254e;
-                margin-bottom: 0;
-            }
-            
-            .tx-list.tx-in, .tx-list.tx-in a, .tx-list.tx-in a:active, .tx-list.tx-in a:focus{
-                color: green;
-            }
-            
-            .tx-list.tx-pool, .tx-list.tx-pending, .tx-list.tx-pending a, .tx-list.tx-pending a:active, .tx-list.tx-pending a:focus, .tx-list.tx-pool a, .tx-list.tx-pool a:active, .tx-list.tx-pool a:focus{
-                color: orange;
-            }
-            
-            .tx-list a:hover{
-                color: #337AB7;
-            }
-            
-            .tx-list.txid{
-                color: inherit;
-            }
-            
-            .tx-list.tx-payment-id{
-                font-weight: normal;
-            }
-            
-            .tx-fee-hide, .tx-note-hide, .tx-destinations-hide{
-                display: none;
-            }
-            
-            .tx-list.tx-lock{
-                color: #666;
-            }
-            
-            .modal-progress-text{
-                color: #333;
-                font-size: 90%;
-                font-weight: bold;
-                margin-left: 10px;
-            }
-            
-            #form_receive input, #form_send_tx input, #form_send_tx select{
-                font-size: 14px;
-            }
-            
-            .btn-sm{
-                border-radius: 0;
-            }
-            
-            table {
-                border-spacing: 0;
-                border-collapse: collapse;
-                font-size: 12px;
-            }
-            
-            table thead tr{
-                height: 3em;
-            }
-            
-            table tbody tr {
-                color: #aaa;
-                height: 3em;
-                line-height: 1.6em;
-            }
-            
-            table thead tr th{
-                text-align: left;
-                text-size: 18px;
-                padding: auto 1em;
-            }
-            
-            table tbody tr td a:hover{
-                color: #666;
-                cursor: pointer;
-            }
-            
-            .address-book-row{
-                cursor: pointer;
-            }
-            
-            #address-book-box{
-                max-height: 450px;
-            }
-            
-            #address-book-box table{
-                width: 100%;
-            }
-            
-            #address-book-box table thead {
-                display: inline-block;
-                width: 100%;
-            }
-            
-            #address-book-box table tbody {
-                border-top: none;
-                max-height: 300px;
-                display: inline-block;
-                width: 100%;
-                overflow: auto;
-            }
-            
-            #address-book-box table tbody::-webkit-scrollbar-track,
-                .tx-destinations::-webkit-scrollbar-track
-            {
-                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-                background-color: #F5F5F5;
-            }
-                       
-            
-            #address-book-box table tbody::-webkit-scrollbar,
-                .tx-destinations::-webkit-scrollbar
-            {
-                width: 8px;
-                background-color: #F5F5F5;
-            }
-            
-            .tx-destinations::-webkit-scrollbar{
-                height: 8px;
-            }
-            
-            #address-book-box table tbody::-webkit-scrollbar-thumb,
-                .tx-destinations::-webkit-scrollbar-thumb
-            {
-                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-                background-color: #ccc;
-            }
-            
-            .tx-destinations {
-                width: 100%;
-                max-height: 200px;
-                overflow: auto;
-                font-size: 90%;
-            }
-            
-            .wallet-settings{
-                text-align: center;
-            }
-            
-            .wallet-settings button{
-                margin-left: 20px;
-            }
-            
-            .form-control.address-box{
-                font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-                font-size: 85%;
-                color: #000;
-            }
-            
-            textarea{
-                border:none;
-                width:100%;
-                resize:none;
-                font-weight:bold;
-            }
-            
-        </style>
+        <link href="./css/app.css" rel="stylesheet">
         
         <script src="./scripts/jquery-1.9.1.min.js"></script>
         <script src="./scripts/bootstrap.min.js"></script>
@@ -395,8 +117,21 @@ html ="""
                         }
                         html += "</tbody></table></div>";
                     }
+                    var addButton = {};
                     
-                    show_app_dialog(html);
+                    if($('#send_address').val() != ""){
+                        addButton['addAddress'] = {
+                            'text': 'add current',
+                            'click': function(){
+                                var address = $('#send_address').val()
+                                var payment_id = $('#send_payment_id').val()
+                                app_hub.addAdress(address, payment_id, "");
+                            }
+                        };
+                    }
+                    
+                    show_app_dialog(html, addButton);
+                    
                     
                     $(".address-book-row").click(function() {
                         $("#send_address").val( $(this).data("address") );
@@ -814,10 +549,51 @@ html ="""
                 return false;
             }
             
-            function show_app_dialog(msg, title){
+            function show_app_dialog(msg, buttons){
+                buttons = typeof buttons == "undefined" ? {} : buttons;
+                
                 $('#app_model_body').css("color", "#666"); 
                 $('#app_model_body').html(msg);
-                $('#btn_copy').text('Copy');
+                
+                if($('#app_model_body').find('copied').length > 0 && !buttons['btn_copy']){
+                    buttons['btn_copy'] = {
+                        'text': 'Copy',
+                        'click': function(){
+                            copy_dialog_content()
+                        }
+                    };
+                }
+                
+                if(!buttons['close']){
+                    buttons['close'] = {
+                        'text': 'Close',
+                        click: function(){
+                            hide_app_dialog();
+                        },
+                        data: {
+                            'dismiss': 'modal'
+                        }
+                    };
+                }
+                
+                $('#app_modal_dialog .modal-footer').html("");
+                for(var buttonId in buttons){
+                    var buttonData = buttons[buttonId];
+                    var button = $('<button>')
+                            .prop("id", buttonId)
+                            .text(buttonData['text'])
+                            .prop('class', 'btn btn-primary')
+                    ;
+                    if(buttonData['data']){
+                        button.data(buttonData['data']);
+                    }
+                    if(buttonData['click']){
+                        button.click(buttonData['click']);
+                    }
+                    
+                    $('#app_modal_dialog .modal-footer').append(button);
+                }
+                
                 $('#app_modal_dialog').modal('show');
             }
             
@@ -860,6 +636,10 @@ html ="""
                 return false;
             }
             
+            function add_current_adress(){
+                app_hub.copy_text( $('#app_model_body .copied').text() );
+                $('#btn_copy').text('Copied');
+            }
             function copy_dialog_content(){
                 app_hub.copy_text( $('#app_model_body .copied').text() );
                 $('#btn_copy').text('Copied');
@@ -1243,8 +1023,6 @@ html ="""
                 <div class="modal-content">
                     <div class="modal-body" id="app_model_body"></div>
                     <div class="modal-footer">
-                        <button id="btn_copy" type="button" class="btn btn-primary" onclick="copy_dialog_content()">Copy</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

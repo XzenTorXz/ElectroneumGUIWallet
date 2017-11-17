@@ -15,7 +15,7 @@ from utils.common import getHomeDir, makeDir
 
 USER_AGENT = "Electroneum GUI Wallet"
 APP_NAME = "Electroneum Wallet"
-VERSION = [0, 0, 1]
+VERSION = [0, 4, 0]
 
 
 _data_dir = makeDir(os.path.join(os.getcwd(), 'data'))

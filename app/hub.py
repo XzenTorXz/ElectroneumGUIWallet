@@ -392,23 +392,30 @@ class Hub(QObject):
             self.ui.update_wallet_info()
             
             if save_address:
-                desc, _ = self._custom_input_dialog(self.ui, \
-                        'Saving Address...', \
-                        "Address description/note (optional):")
-                ret = self.ui.wallet_rpc_manager.rpc_request.add_address_book(address, \
-                                                                              payment_id, desc)
-                if ret['status'] == "OK":
-                    if self.ui.wallet_info.wallet_address_book:
-                        address_entry = {"address": address, 
-                                     "payment_id": payment_id, 
-                                     "description": desc[0:200], 
-                                     "index": ret["index"]
-                                     }
-                        self.ui.wallet_info.wallet_address_book.append(address_entry)
-                    
-                    QMessageBox.information(self.ui, "Address Saved", \
-                                            "Address (and payment ID) saved to address book.")    
+                self.addAdress(address, payment_id, ""); 
             
+    @Slot(str, str, str)
+    def addAdress(self, address, payment_id, desc = ""):
+        
+        if desc == "" :
+            desc, _ = self._custom_input_dialog(self.ui, \
+                    'Saving Address...', \
+                    "Address description/note (optional):")
+        
+        ret = self.ui.wallet_rpc_manager.rpc_request.add_address_book(address, \
+                                                                      payment_id, desc)
+        if ret['status'] == "OK":
+            if self.ui.wallet_info.wallet_address_book:
+                address_entry = {"address": address, 
+                             "payment_id": payment_id, 
+                             "description": desc[0:200], 
+                             "index": ret["index"]
+                             }
+                self.ui.wallet_info.wallet_address_book.append(address_entry)
+
+            QMessageBox.information(self.ui, "Address Saved", \
+                                    "Address (and payment ID) saved to address book.")    
+
             
     @Slot(int)
     def generate_payment_id(self, hex_length=16):
