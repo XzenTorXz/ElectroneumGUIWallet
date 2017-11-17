@@ -40,7 +40,7 @@ jQuery.fn.extend({
 
 
 function printMoney(n){
-    return (n.formatMoney(9, 3, ",", "."));
+    return (n.formatMoney(2, 3, ",", "."));
 }
 
 function pad(num, size) {
