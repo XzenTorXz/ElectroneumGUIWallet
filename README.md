@@ -28,8 +28,7 @@ It is changed to be compatible with Electroneum.
 
 4. Contribution
 
-	Pull-requests and help is always welcome. Since I'm not the greatest Phyton developer feel free to ask to take over the project. If you want to buy me a beer:
-
+	Pull-requests and help is always welcome. If you want to buy me a beer:
 	
 	ETN: etnjwraRJzdMMDy5zMY1CEaKCHYqn73AvKzKj2MCtLfXDdzoFSQqKHwENYA4gjY7mhRRbko3rbed8JnQnVNrXukV33AymaJNkD
 	
