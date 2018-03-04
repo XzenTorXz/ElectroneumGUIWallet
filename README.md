@@ -19,7 +19,7 @@ It is changed to be compatible with Electroneum.
 			sudo apt install python-pyside
 
 
-2. Build/download Sumokoin binaries from [Sumokoin repo](https://github.com/sumoprojects/sumokoin) and put it to `Resources/bin` sub-directory.
+2. Build/download Electroneum binaries from [Electroneum repo](https://github.com/electroneum/electroneum) and put it to `Resources/bin` sub-directory.
 
 3. Run the wallet (Python 2.7):
 		
@@ -28,8 +28,7 @@ It is changed to be compatible with Electroneum.
 
 4. Contribution
 
-	Pull-requests and help is always welcome. Since I'm not the greatest Phyton developer feel free to ask to take over the project. If you want to buy me a beer:
-
+	Pull-requests and help is always welcome. If you want to buy me a beer:
 	
 	ETN: etnjwraRJzdMMDy5zMY1CEaKCHYqn73AvKzKj2MCtLfXDdzoFSQqKHwENYA4gjY7mhRRbko3rbed8JnQnVNrXukV33AymaJNkD
 	
